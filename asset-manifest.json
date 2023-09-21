@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Aquilesdiaz-47185-adzshoes/static/css/main.1ad5ecec.css",
+    "main.js": "/Aquilesdiaz-47185-adzshoes/static/js/main.b0d39f67.js",
+    "static/js/787.dcc73137.chunk.js": "/Aquilesdiaz-47185-adzshoes/static/js/787.dcc73137.chunk.js",
+    "index.html": "/Aquilesdiaz-47185-adzshoes/index.html",
+    "main.1ad5ecec.css.map": "/Aquilesdiaz-47185-adzshoes/static/css/main.1ad5ecec.css.map",
+    "main.b0d39f67.js.map": "/Aquilesdiaz-47185-adzshoes/static/js/main.b0d39f67.js.map",
+    "787.dcc73137.chunk.js.map": "/Aquilesdiaz-47185-adzshoes/static/js/787.dcc73137.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1ad5ecec.css",
+    "static/js/main.b0d39f67.js"
+  ]
+}
