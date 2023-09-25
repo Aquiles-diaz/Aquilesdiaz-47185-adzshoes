@@ -6,8 +6,8 @@ const NavBar = () => {
   return (
     <div className="container" id="navbar">
       <div className="row">
-        <div className="col-6">
-          <nav className="navbar navbar-expand-lg ">
+        <div className="col-6 p-3">
+          <nav className="navbar navbar-expand-lg fw-bold ">
             <div className="container-fluid">
               <Link className="navbar-brand" to={"/"}>
                 <img

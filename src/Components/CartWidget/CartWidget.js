@@ -4,8 +4,8 @@ import "../CartWidget/cart.css"
 const CartWidget = () => {
   return (
     <div>
-        <i className="bi bi-cart-plus-fill"></i>
-        <span className='number-static'>0</span>
+      <i className="bi bi-cart-plus-fill "></i>
+        <span className='number-static fw-bold'>0</span>
     </div>
   )
 }

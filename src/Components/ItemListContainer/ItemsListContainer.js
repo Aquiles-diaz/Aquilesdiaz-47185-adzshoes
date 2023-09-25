@@ -23,14 +23,14 @@ const ItemListContainer = () => {
       }
     };
     fetchData();
-//      const promesa = new Promise((resolve)=>{
- //       setTimeout(()=>{
- //         resolve(id ? arrayProductos.filter(item=> item.categoria === id) : arrayProductos)
-  //      }, 2000)
-  //    });
-  //    promesa.then((data)=>{
-   //     setItem(data)
-   //   })
+      const promesa = new Promise((resolve)=>{
+       setTimeout(()=>{
+         resolve(id ? Products.filter(item=> item.categoria === id) : Products)
+        }, 2000)
+      });
+      promesa.then((data)=>{
+        setItem(data)
+      })
      }, [id])
 
   return (
