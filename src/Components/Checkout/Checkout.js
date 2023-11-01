@@ -1,13 +1,6 @@
 import { useState } from 'react';
 import { useCartContext } from '../../Context/CartContext';
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  updateDoc,
-  doc,
-  getDoc,
-} from 'firebase/firestore';
+import {getFirestore, collection, addDoc, updateDoc, doc, getDoc,} from 'firebase/firestore';
 
 export const Checkout = () => {
   const [nombre, setNombre] = useState('');
@@ -17,14 +10,14 @@ export const Checkout = () => {
   const [emailConfirmacion, setEmailConfirmacion] = useState('');
   const [error, setError] = useState('');
   const [ordenId, setOrdenId] = useState('');
-  const [ setMensaje] = useState('');
+  const [mensaje, setMensaje] = useState('');
 
   const { cart, removeProduct, totalPrice } = useCartContext();
 
   const manejadorFormulario = (event) => {
     event.preventDefault();
 
-    if (!nombre || !apellido || !telefono || !email || !emailConfirmacion) {
+    if (!nombre || !apellido || !telefono || !email || !emailConfirmacion || !mensaje) {
       setError('Por favor completa todos los campos');
       return;
     }
@@ -37,7 +30,7 @@ export const Checkout = () => {
     const orden = {
       items: cart.map((producto) => ({
         id: producto.id,
-        nombre: producto.title,
+        nombre: producto.name,
         cantidad: producto.quantity,
       })),
       total: total,
@@ -51,7 +44,7 @@ export const Checkout = () => {
     Promise.all(
       orden.items.map(async (productoOrden) => {
         const db = getFirestore();
-        const productoRef = doc(db, 'products', productoOrden.id);
+        const productoRef = doc(db, 'product', productoOrden.id);
 
         const productoDoc = await getDoc(productoRef);
         const stockActual = productoDoc.data().stock;
@@ -69,7 +62,7 @@ export const Checkout = () => {
             removeProduct();
           })
           .catch((error) => {
-            console.log('Error en creacon de orden', error);
+            console.log('Error en creacion de orden', error);
             setError('Error en orden');
           });
       })
@@ -89,10 +82,10 @@ export const Checkout = () => {
   return (
     <>
       <h2 className="info">
-        Rellena el formulario y nos contactaremos para enviar sus productos
+        Rellena el formulario para Finalizar tu Compra
       </h2>
-
-      <form onSubmit={manejadorFormulario}>
+      
+      <form className='form-container' onSubmit={manejadorFormulario}>
         {cart.map((producto) => (
           <div className="item-check" key={producto.id}>
             <p>
@@ -103,9 +96,9 @@ export const Checkout = () => {
             
           </div>
         ))}
-
+       
         <div className="form-group">
-          <label className="lab-check">Nombre</label>
+          <label className="lab-check">Nombre:</label>
           <input
             className="input-check"
             type="text"
@@ -113,9 +106,9 @@ export const Checkout = () => {
             onChange={(e) => setNombre(e.target.value)}
           />
         </div>
-
+       
         <div className="form-group">
-          <label className="lab-check">Apellido</label>
+          <label className="lab-check">Apellido:</label>
           <input
             className="input-check"
             type="text"
@@ -123,9 +116,9 @@ export const Checkout = () => {
             onChange={(e) => setApellido(e.target.value)}
           />
         </div>
-
+       
         <div className="form-group">
-          <label className="lab-check">Telefono</label>
+          <label className="lab-check">Telefono:</label>
           <input
             className="input-check"
             type="number"
@@ -133,9 +126,9 @@ export const Checkout = () => {
             onChange={(e) => setTelefono(e.target.value)}
           />
         </div>
-
+       
         <div className="form-group">
-          <label className="lab-check">Email</label>
+          <label className="lab-check">Email: </label>
           <input
             className="input-check"
             type="email"
@@ -143,9 +136,9 @@ export const Checkout = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-
+       
         <div className="form-group">
-          <label className="lab-check">Email Confirmacion</label>
+          <label className="lab-check">Repetir Email:</label>
           <input
             className="input-check"
             type="email"
@@ -153,6 +146,18 @@ export const Checkout = () => {
             onChange={(e) => setEmailConfirmacion(e.target.value)}
           />
         </div>
+      
+        <div className="form-group">
+          <label className="lab-check">mensaje</label>
+          <input
+            className="input-check"
+            type="text"
+            value={mensaje}
+            onChange={(e) => setMensaje(e.target.value)}
+          />
+        </div>
+        
+        
 
         {error && <p className="error-campos">{error}</p>}
 
@@ -162,13 +167,15 @@ export const Checkout = () => {
             {ordenId}{' '}
           </p>
         )}
-
-        <div className="checking">
-          <button className="check-bt" type="submit">
-            Finalizar Compra
+         <div className="form-group">
+          <div className="checking">
+            <button className="btn btn-primary" type="submit">
+              Enviar
           </button>
         </div>
+        </div>
       </form>
+      
     </>
   );
 };
