@@ -4,9 +4,9 @@ import NavBar from "./Components/NavBar/NavBar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ItemListContainer from "./Components/ItemListContainer/ItemsListContainer";
 import CartProvider from '../src/Context/CartContext';
-import Cart from "../src/component/Cart/Cart";
-import {Checkout} from '../src/component/Checkout/Checkout';
-import ItemDetailContainer from "../src/component/ItemDetailContainer/ItemDetailContainer";
+import Cart from "../src/Components/cart/cart";
+import {Checkout} from '../src/Components/Checkout/Checkout';
+import ItemDetailContainer from "../src/Components/ItemDetailContainer/ItemDetailContainer";
 
 import Error404 from "../src/Components/Error404";
 
