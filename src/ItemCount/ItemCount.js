@@ -1,43 +1,35 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const ItemCount = ({stockItems}) => {
+const ItemCount = ({ initial, stock, onAdd }) => {
+	const [count, setCount] = useState(parseInt(initial));
+	const decrease = () => {
+		setCount(count - 1);
+	};
 
-    const [counter, setCounter] = useState(1);
-    const [stock,] = useState(stockItems);
+	const increase = () => {
+		setCount(count + 1);
+	};
 
-    const incrementarStock = () => {
-        if (counter < stock) {
-            setCounter(counter + 1);
-        } 
-    }
+	useEffect(() => {
+		setCount(parseInt(initial));
+	}, [initial]);
 
-    const decrementarStock = () => {
-        if (counter > 1) {
-            setCounter(counter - 1)
-        }
-        
-    }
-
-    return(
-        <div className="container" id="itemcount">
-            <div className="row mb-3">
-                <div className="col-md-2">
-                    <div className="btn-group" role="group" aria-label="Basic outlined example">
-                        <button type="button" className="btn btn-outline-info" onClick={decrementarStock} >-</button>
-                        <button type="button" className="btn btn-outline-info">{counter} </button>
-                        <button type="button" className="btn btn-outline-info" onClick={incrementarStock} >+</button>
-                     </div>
-                </div>
-            </div>
-         <div className="row">
-         <div className="col-md-2">
-            <button type="button" className="btn btn-outline-info" >Agregar al carrito</button>    
-                
-                </div>
-            </div>
-        </div>  
-    )
-}
+	return (
+		<div className="counter">
+			<button className="btn btn-secondary" disabled={count <= 1} onClick={decrease}>
+				-
+			</button>
+			<span>{count}</span>
+			<button className="btn btn-secondary" disabled={count >= stock} onClick={increase}>
+				+
+			</button>
+			<div>
+				<button className="btn btn-primary" disabled={stock <= 0} onClick={() => onAdd(count)}>
+					Agregar al carrito
+				</button>
+			</div>
+		</div>
+	);
+};
 
 export default ItemCount;
