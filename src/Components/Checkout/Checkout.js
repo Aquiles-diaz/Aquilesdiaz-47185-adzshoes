@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useCartContext } from '../../Context/CartContext';
+
 import {getFirestore, collection, addDoc, updateDoc, doc, getDoc,} from 'firebase/firestore';
 
 export const Checkout = () => {
@@ -28,10 +29,10 @@ export const Checkout = () => {
     }
     const total = totalPrice();
     const orden = {
-      items: cart.map((producto) => ({
-        id: producto.id,
-        nombre: producto.name,
-        cantidad: producto.quantity,
+      items: cart.map((products) => ({
+        id: products.id,
+        nombre: products.tittle,
+        cantidad: products.quantity,
       })),
       total: total,
       fecha: new Date(),
@@ -44,7 +45,7 @@ export const Checkout = () => {
     Promise.all(
       orden.items.map(async (productoOrden) => {
         const db = getFirestore();
-        const productoRef = doc(db, 'product', productoOrden.id);
+        const productoRef = doc(db, 'products', productoOrden.id);
 
         const productoDoc = await getDoc(productoRef);
         const stockActual = productoDoc.data().stock;
