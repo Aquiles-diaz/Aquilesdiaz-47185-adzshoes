@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Aquilesdiaz-47185-adzshoes/static/css/main.144429dc.css",
-    "main.js": "/Aquilesdiaz-47185-adzshoes/static/js/main.dd540da8.js",
+    "main.js": "/Aquilesdiaz-47185-adzshoes/static/js/main.f04a7a74.js",
     "static/js/496.784e041d.chunk.js": "/Aquilesdiaz-47185-adzshoes/static/js/496.784e041d.chunk.js",
     "index.html": "/Aquilesdiaz-47185-adzshoes/index.html",
     "main.144429dc.css.map": "/Aquilesdiaz-47185-adzshoes/static/css/main.144429dc.css.map",
-    "main.dd540da8.js.map": "/Aquilesdiaz-47185-adzshoes/static/js/main.dd540da8.js.map",
+    "main.f04a7a74.js.map": "/Aquilesdiaz-47185-adzshoes/static/js/main.f04a7a74.js.map",
     "496.784e041d.chunk.js.map": "/Aquilesdiaz-47185-adzshoes/static/js/496.784e041d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.144429dc.css",
-    "static/js/main.dd540da8.js"
+    "static/js/main.f04a7a74.js"
   ]
 }
